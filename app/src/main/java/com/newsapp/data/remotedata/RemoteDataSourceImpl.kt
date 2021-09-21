@@ -1,6 +1,6 @@
 package com.newsapp.data.remotedata
 
-import NewsResponse
+import com.newsapp.model.NewsResponse
 import java.lang.Exception
 import javax.inject.Inject
 

@@ -15,9 +15,9 @@ class NewsAdapter (val onClickListener: NewsClickListener) : ListAdapter<Article
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        val video = getItem(position)
-        holder.bind(video)
-        holder.itemView.setOnClickListener { video?.let { onClickListener.onClick(it) } }
+        val article = getItem(position)
+        holder.bind(article)
+        holder.itemView.setOnClickListener { article?.let { onClickListener.onClick(it) } }
 
 
     }

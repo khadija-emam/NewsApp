@@ -1,6 +1,9 @@
 package com.newsapp.ui.home
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +12,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
-    val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
     lateinit var adapter: NewsAdapter
 
     override fun onCreateView(
@@ -24,8 +28,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-
-
         binding.lifecycleOwner = this
 
         setUpAdapter()
@@ -33,13 +35,28 @@ class HomeFragment : Fragment() {
         observeForVideos()
         observeForLoading()
         observeNavigation()
+        observeForNoNews()
+         search()
         return binding.root
     }
+      private fun search(){
+     binding.searchEd.addTextChangedListener(object : TextWatcher {
+         override fun afterTextChanged(s: Editable?) {
+             viewModel.filter(s.toString())
+         }
 
+         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+         }
+
+         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+         }
+     })
+ }
     private fun observeNavigation() {
         viewModel.navigate.observe(viewLifecycleOwner) {
             it?.let {
-                HomeFragmentDirections.actionHomeFragmentToDownloadFragment(it)
+                Log.i("TAG", "observeNavigation: $it")
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToArticleViewFragment(it))
             }
         }
     }
@@ -50,6 +67,16 @@ class HomeFragment : Fragment() {
                 binding.loading.visibility = View.VISIBLE
             } else {
                 binding.loading.visibility = View.GONE
+
+            }
+        })
+    }
+    private fun observeForNoNews() {
+        viewModel.noNews.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                binding.noNews.visibility = View.VISIBLE
+            } else {
+                binding.noNews.visibility = View.GONE
 
             }
         })

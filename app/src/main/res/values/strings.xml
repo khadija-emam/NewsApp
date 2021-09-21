@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NewsApp</string>
+    <string name="no_news">There isn\'t any news right now</string>
 </resources>

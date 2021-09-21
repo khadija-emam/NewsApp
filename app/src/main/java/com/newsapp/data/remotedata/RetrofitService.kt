@@ -1,7 +1,7 @@
 package com.newsapp.data.remotedata
 
-import NewsResponse
 import com.newsapp.di.API_KEY
+import com.newsapp.model.NewsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

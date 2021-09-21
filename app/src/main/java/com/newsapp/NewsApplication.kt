@@ -1,4 +1,4 @@
-package com.news
+package com.newsapp
 
 import android.app.Application
 import dagger.hilt.android.AndroidEntryPoint

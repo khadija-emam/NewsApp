@@ -4,7 +4,9 @@
     xmlns:tool="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="img"
+    type="String" />
     </data>
  <ScrollView
     android:layout_width="match_parent"
@@ -20,7 +22,8 @@
             android:scaleType="fitXY"
             app:layout_constraintTop_toTopOf="parent"
             tool:layout_editor_absoluteX="-39dp"
-            tool:src="@drawable/dummy" />
+            tool:src="@drawable/dummy"
+            imageUrl="@{img}"/>
 
         <ImageView
             android:layout_width="match_parent"

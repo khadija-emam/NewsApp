@@ -1,7 +1,7 @@
 package com.newsapp.data.repository
 
-import NewsResponse
+import com.newsapp.model.NewsResponse
 
 interface Repository {
-    suspend fun getNews():NewsResponse?
+    suspend fun getNews(): NewsResponse?
 }

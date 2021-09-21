@@ -17,5 +17,10 @@
     <fragment
         android:id="@+id/articleViewFragment"
         android:name="com.newsapp.ui.articleview.ArticleViewFragment"
-        android:label="ArticleViewFragment" />
+        android:label="ArticleViewFragment"
+        tools:layout="@layout/article_view">
+        <argument
+            android:name="article"
+            app:argType="com.newsapp.model.Article" />
+    </fragment>
 </navigation>
