@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.newsapp.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleViewFragment"
+        android:name="com.newsapp.ui.articleview.ArticleViewFragment"
+        android:label="ArticleViewFragment" />
+</navigation>
