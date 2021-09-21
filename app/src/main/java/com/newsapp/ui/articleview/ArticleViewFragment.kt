@@ -30,7 +30,7 @@ class ArticleViewFragment:Fragment() {
     }
     private fun setArticle( args: ArticleViewFragmentArgs) {
         binding.title.text = args.article.title
-        binding.sourceName.text = args.article.author
+        binding.sourceName.text = args.article.source?.name
         binding.description.text = args.article.description
         binding.img=args.article.urlToImage
     }

@@ -74,6 +74,9 @@ class HomeViewModel @Inject constructor(val repository: Repository) : ViewModel(
     }
 
 
+  fun completeNavigation(){
+      _navigate.value=null
 
+  }
 
 }

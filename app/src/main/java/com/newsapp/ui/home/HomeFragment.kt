@@ -57,6 +57,7 @@ class HomeFragment : Fragment() {
             it?.let {
                 Log.i("TAG", "observeNavigation: $it")
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToArticleViewFragment(it))
+            viewModel.completeNavigation()
             }
         }
     }
