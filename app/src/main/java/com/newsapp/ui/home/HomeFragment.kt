@@ -84,7 +84,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeForVideos() {
-        viewModel.getPosts()
         viewModel.videosList.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })

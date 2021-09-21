@@ -29,10 +29,12 @@ class HomeViewModel @Inject constructor(val repository: Repository) : ViewModel(
     private val _progress = MutableLiveData<Boolean>()
     val progress: LiveData<Boolean>
         get() = _progress
-    private val _navigate = MutableLiveData<Article>()
-    val navigate: LiveData<Article>
+    private val _navigate = MutableLiveData<Article?>()
+    val navigate: LiveData<Article?>
         get() = _navigate
-
+init {
+    getPosts()
+}
     fun filter(searchWord: String) {
         if (searchWord.isNotEmpty()) {
             val filteredItem = _videosList.value?.filter { product ->
